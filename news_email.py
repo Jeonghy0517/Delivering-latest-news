@@ -82,11 +82,11 @@ files = list()
 files.append('breaking_news.html')
 
 for f in files:
-    part = MIMEBase('application',"octet-stream")
+    part = MIMEBase('application', "octet-stream")
     part.set_payload(open(f, "rb").read())
-    encode_base64(part) #바이너리 파일 base64 인코딩
-    part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path)
-    msg.attach(part) #파일 첨부
+    encode_base64(part)                           # 바이너리 파일 base64 인코딩
+    part.add_header('Content-Disposition', 'attachment; filename="%s"' % os.path.basename(f))
+    msg.attach(part)                              # 파일 첨부
 
 import getpass
 
